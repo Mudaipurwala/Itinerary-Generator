@@ -1,0 +1,102 @@
+# API URLS SECTION: Insert your own API URL's or use the existing URL's to get data
+# DATA TYPE: str
+API_URLS:
+  POI: https://www.triposo.com/api/20190906/poi.json
+  FOOD: https://developers.zomato.com/api/v2.1/search
+  LOCATION: https://developers.zomato.com/api/v2.1/cities
+  WEATHER: https://api.openweathermap.org/data/2.5/forecast
+
+# API HEADERS SECTION: Insert your own API Headers or use/modify the existing headers
+# DATA TYPE: dict
+# NOTE: REGISTRATION IS REQUIRED TO GENERATE API KEYS/TOKENS FOR ABOVE API'S
+API_HEADERS:
+  POI:
+    X-Triposo-Account: # Triposo Account
+    X-Triposo-Token: # Account Token
+  FOOD:
+    user-key: # Zomato User Key
+  LOCATION:
+    user-key: # Zomato User Key
+  WEATHER:
+    headers: ''
+
+# API FIELDS SECTION: Insert your own API Fields or use the existing fields
+# DATA TYPE: list
+API_FIELDS:
+  POI: 
+    - name
+    - location_id
+    - score
+    - price_tier
+    - snippet
+  FOOD:
+    - restaurant.name
+    - restaurant.user_rating.aggregate_rating
+    - restaurant.all_reviews_count
+    - restaurant.user_rating.rating_text
+    - restaurant.average_cost_for_two
+    - restaurant.currency
+    - restaurant.phone_numbers
+    - restaurant.location.address
+    - restaurant.photos_url
+  WEATHER:
+    - dt_txt
+    - main.temp
+    - main.feels_like
+    - main.temp_max
+    - main.temp_min
+    - main.humidity
+
+# API COLUMNS SECTION: Change columns names or use existing columns names
+# DATA TYPE: dict
+API_COL_NAMES:
+  POI:
+    name: poi
+    location_id: location
+    score: rating
+    price_tier: price_range
+    snippet: description
+  FOOD:
+    restaurant.name: name
+    restaurant.user_rating.aggregate_rating: rating
+    restaurant.all_reviews_count: review_count
+    restaurant.user_rating.rating_text: rating_text
+    restaurant.average_cost_for_two: avg_cost_for_two
+    restaurant.currency: currency
+    restaurant.phone_numbers: phone
+    restaurant.location.address: address
+    restaurant.photos_url: photo_url
+  WEATHER:
+    dt_txt: datetime
+    main.temp: temp
+    main.feels_like: feels_like
+    main.temp_max: high
+    main.temp_min: low
+    main.humidity: humidity
+
+# API HOLDER SECTION: Change primary JSON key, leave as default if using these API's
+# DATA TYPE: str
+API_HOLDER:
+  POI: 'results'
+  FOOD: 'restaurants'
+  WEATHER: 'list'
+
+# API PARAMS SECTION: Change/Add or use existing Params for custom response
+# DATA TYPE: dict
+API_PARAMS:
+  FOOD:
+    count: '20'
+    entity_id: '292'
+    entity_type: city
+    sort: rating
+  LOCATION:
+    q: Chicago
+  POI:
+    count: '25'
+    location_id: Chicago
+    order_by: score
+    tag_labels: sightseeing
+  WEATHER:
+    appid: # API KEY FROM OPENWEATHER MAP API
+    q: Chicago
+    units: imperial
